@@ -3,32 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validation de formulaire javascript</title>
+    <title>Validation de formulaire JavaScript</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="form-main">
         <div id="form-div">
-          <form class="form" id="form1">
-            
-            <p class="name">
-              <input name="nom" type="text" class="feedback-input" placeholder="nom" id="nom" />
-            </p>
-            
-            <p class="email">
-              <input name="email" type="text" class="feedback-input" id="email" placeholder="Email" />
-            </p>
-            
-            <p class="text">
-                <input name="adresse" type="text" class="feedback-input" id="adresse" placeholder="adresse" />
-            </p>
-            
-            <div class="submit">
-              <input type="submit" value="ENVOYER" id="button-blue"/>
-              <div class="ease"></div>
-            </div>
-          </form>
+            <form class="form" id="form1">
+                <p class="name">
+                    <input name="prenom" type="text" class="feedback-input" placeholder="Prénom" id="prenom" />
+                    <div class="error" id="prenomError"></div>
+                </p>
+                <p class="name">
+                    <input name="nom" type="text" class="feedback-input" placeholder="Nom" id="nom" />
+                    <div class="error" id="nomError"></div>
+                </p>
+                <p class="email">
+                    <input name="email" type="email" class="feedback-input" id="email" placeholder="Email" />
+                    <div class="error" id="emailError"></div>
+                </p>
+                <p class="text">
+                    <input name="password" type="password" class="feedback-input" id="password" placeholder="Mot de passe" />
+                    <div class="error" id="passwordError"></div>
+                </p>
+                <div class="submit">
+                    <input type="submit" value="ENVOYER" id="button-blue"/>
+                    <div class="ease"></div>
+                </div>
+            </form>
+            <div id="successMessage" style="display: none;">Succès! Le formulaire a été bien soumis.</div>
         </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
