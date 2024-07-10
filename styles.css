@@ -5,7 +5,11 @@ html {
     background-size: cover;
     height: 100%;
 }
-
+h1{
+    text-transform: uppercase;
+    text-align: center;
+    color: #ce0033;
+}
 #feedback-page {
     text-align: center;
 }
@@ -17,7 +21,7 @@ html {
 }
 
 #form-div {
-    background-color: #ebe7df;
+    background-color: #ffff;
     padding-left: 35px;
     padding-right: 35px;
     padding-top: 35px;
@@ -32,7 +36,7 @@ html {
 }
 
 .feedback-input {
-    color: #3c3c3c;
+    color: #333;
     font-family: Helvetica, Arial, sans-serif;
     font-weight: 500;
     font-size: 18px;
@@ -61,7 +65,7 @@ html {
     width: 100%;
     border: #fbfbfb solid 4px;
     cursor: pointer;
-    background-color: #3498db;
+    background-color: #333;
     color: white;
     font-size: 24px;
     padding-top: 22px;
@@ -72,12 +76,12 @@ html {
 }
 
 #button-blue:hover {
-    background-color: rgba(0, 0, 0, 0);
-    color: #0493bd;
+    background-color: #ce0033;
+    color: #fff;
 }
 
 .submit:hover {
-    color: #3498db;
+    color: #fff;
 }
 
 .error {
@@ -89,7 +93,7 @@ html {
 .success {
     border: 3px solid green;
 }
-
+ 
 .ease {
     width: 0px;
     height: 74px;
