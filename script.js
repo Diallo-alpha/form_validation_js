@@ -3,6 +3,7 @@ const prenom = document.getElementById('prenom');
 const nom = document.getElementById('nom');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
+const submitButton = document.getElementById('button-blue');
 const successMessage = document.getElementById('successMessage');
 
 // Validation regex patterns
@@ -27,39 +28,75 @@ const envSucc = (element) => {
     element.classList.remove('error');
 }
 
+const checkField = (element, validator) => {
+    if (validator()) {
+        envSucc(element);
+        return true;
+    } else {
+        envErr(element, "Le champ est invalide.");
+        return false;
+    }
+}
+
+prenom.addEventListener('blur', () => {
+    if (checkField(prenom, () => prenom.value.trim().length >= 3 && prenom.value.trim().length <= 15)) {
+        nom.disabled = false;
+    } else {
+        nom.disabled = true;
+        email.disabled = true;
+        password.disabled = true;
+        submitButton.disabled = true;
+    }
+});
+
+nom.addEventListener('blur', () => {
+    if (checkField(nom, () => nom.value.trim().length >= 3 && nom.value.trim().length <= 15)) {
+        email.disabled = false;
+    } else {
+        email.disabled = true;
+        password.disabled = true;
+        submitButton.disabled = true;
+    }
+});
+
+email.addEventListener('blur', () => {
+    if (checkField(email, () => emailPattern.test(email.value.trim()))) {
+        password.disabled = false;
+    } else {
+        password.disabled = true;
+        submitButton.disabled = true;
+    }
+});
+
+password.addEventListener('blur', () => {
+    if (checkField(password, () => password.value.trim().length >= 8)) {
+        submitButton.disabled = false;
+    } else {
+        submitButton.disabled = true;
+    }
+});
+
 const inputValidation = () => {
     let isValid = true;
 
     // Validation du prénom
-    if (prenom.value.trim().length < 3 || prenom.value.trim().length > 15) {
-        envErr(prenom, "Le prénom doit contenir entre 3 et 15 caractères.");
+    if (!checkField(prenom, () => prenom.value.trim().length >= 3 && prenom.value.trim().length <= 15)) {
         isValid = false;
-    } else {
-        envSucc(prenom);
     }
 
     // Validation du nom
-    if (nom.value.trim().length < 3 || nom.value.trim().length > 15) {
-        envErr(nom, "Le nom doit contenir entre 3 et 15 caractères.");
+    if (!checkField(nom, () => nom.value.trim().length >= 3 && nom.value.trim().length <= 15)) {
         isValid = false;
-    } else {
-        envSucc(nom);
     }
 
     // Validation de l'email
-    if (!emailPattern.test(email.value.trim())) {
-        envErr(email, "L'adresse email n'est pas valide.");
+    if (!checkField(email, () => emailPattern.test(email.value.trim()))) {
         isValid = false;
-    } else {
-        envSucc(email);
     }
 
     // Validation du mot de passe
-    if (password.value.trim().length < 8) {
-        envErr(password, "Le mot de passe doit contenir au moins 8 caractères.");
+    if (!checkField(password, () => password.value.trim().length >= 8)) {
         isValid = false;
-    } else {
-        envSucc(password);
     }
 
     // Affichage du message de succès si tout est valide
